@@ -1,0 +1,36 @@
+.flights {
+  width: 20%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 15px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.flights-header {
+  background-color: #04009a;
+  color: white;
+}
+
+table,
+th,
+td {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

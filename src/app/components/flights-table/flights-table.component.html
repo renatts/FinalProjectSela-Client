@@ -1,0 +1,26 @@
+<table class="flights">
+  <thead>
+    <tr class="flights-header">
+      <th>Flight</th>
+      <th>From</th>
+      <th>Destination</th>
+      <th>Direction</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let flight of airplanes">
+      <td style="padding: 0 5px;">{{ flight.SerialID }}</td>
+      <td>{{ flight.Src }}</td>
+      <td>{{ flight.Dst }}</td>
+      <td
+        style="color: white"
+        [ngStyle]="{
+          'background-color': flight.PlanesPurpose ? 'green' : 'red'
+        }"
+      >
+        {{ flight.PlanesPurpose ? "Landing" : "Departing" }}
+      </td>
+    </tr>
+  </tbody>
+</table>

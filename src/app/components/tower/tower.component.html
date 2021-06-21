@@ -1,0 +1,19 @@
+<atc-spots-table></atc-spots-table>
+<atc-flights-table></atc-flights-table>
+<div class="map">
+  <div *ngFor="let spot of spots | keyvalue" class="flex-container">
+    <div>
+      <div style="float: left; vertical-align: middle">
+        {{ spot.value.Spot }}
+      </div>
+      <i
+        [ngStyle]="{
+          color: spot.value.PlaneOnSpot?.PlanesPurpose ? 'green' : 'red'
+        }"
+        class="fas fa-plane"
+        style="float: right"
+      ></i>
+      {{ spot.value.PlaneOnSpot?.SerialID }}
+    </div>
+  </div>
+</div>

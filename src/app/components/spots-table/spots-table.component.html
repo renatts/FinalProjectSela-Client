@@ -1,0 +1,26 @@
+<table class="spots">
+  <thead style="padding: 5px">
+    <tr class="spots-header">
+      <th>Spot</th>
+      <th>State</th>
+      <th>Flight</th>
+      <th>Waiting time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let spot of spots | keyvalue">
+      <td>{{ spot.value.Spot }}</td>
+      <td
+        style="color: white; padding: 5px;"
+        [ngStyle]="{
+          'background-color': spot.value.IsAvailable ? 'lightskyblue' : 'darkorange'
+        }"
+      >
+        {{ spot.value.IsAvailable ? "IDLE" : "BUSY" }}
+      </td>
+      <td>{{ spot.value.PlaneOnSpot?.SerialID }}</td>
+      <td>{{ spot.value.OccupiedSince }}</td>
+    </tr>
+  </tbody>
+</table>

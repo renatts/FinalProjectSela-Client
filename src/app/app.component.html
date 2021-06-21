@@ -1,0 +1,23 @@
+<body>
+  <mat-toolbar class="app-header">
+    <div>
+      <i class="fas fa-paper-plane logo"></i>
+      <span class="header-title">Airport Traffic Control System</span>
+    </div>
+    <ng-container>
+      <span class="nav-tool-items">
+        <a
+          mat-button
+          class="start-btn"
+          routerLink="start"
+          routerLinkActive="active"
+          >Start<i class="fas fa-power-off power-logo"></i
+        ></a>
+      </span>
+    </ng-container>
+  </mat-toolbar>
+
+  <div class="window">
+    <router-outlet> </router-outlet>
+  </div>
+</body>

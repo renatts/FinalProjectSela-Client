@@ -1,0 +1,30 @@
+.app-header {
+  background-color: #04009a;
+}
+
+.header-title {
+  flex: 1 1 auto;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.start-btn {
+  background-color: #3832f8;
+  color: white;
+}
+
+.power-logo {
+  margin-left: 5px;
+  color: white;
+}
+
+.window {
+  padding-top: 4.5%;
+  position: relative;
+}
+
+.logo {
+  color: white;
+  margin-right: 10px;
+}
