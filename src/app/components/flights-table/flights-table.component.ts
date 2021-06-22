@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FlightsTableComponent implements OnInit {
   airplanes: Array<AirPlane>;
+  IsEmergency: boolean = false;
 
   ngOnInit() {
     const connection = new signalR.HubConnectionBuilder()
@@ -27,8 +28,11 @@ export class FlightsTableComponent implements OnInit {
     }
 
     connection.on('BroadcastWaitingAirplanes', (data) => {
-      this.airplanes = JSON.parse(data)
+      this.airplanes = JSON.parse(data);
     });
-   
+  }
+
+  isEmergencyCheck() {
+    this.IsEmergency = !this.IsEmergency;
   }
 }

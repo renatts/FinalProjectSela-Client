@@ -1,10 +1,11 @@
 <table class="spots">
   <thead style="padding: 5px">
     <tr class="spots-header">
-      <th>Spot</th>
+      <th><i class="fas fa-broadcast-tower" style="color: white"></i></th>
       <th>State</th>
       <th>Flight</th>
       <th>Waiting time</th>
+      <th>Emergency</th>
     </tr>
   </thead>
 
@@ -12,15 +13,35 @@
     <tr *ngFor="let spot of spots | keyvalue">
       <td>{{ spot.value.Spot }}</td>
       <td
-        style="color: white; padding: 5px;"
+        style="color: white"
         [ngStyle]="{
-          'background-color': spot.value.IsAvailable ? 'lightskyblue' : 'darkorange'
+          'background-color': spot.value.IsAvailable
+            ? 'lightskyblue'
+            : 'darkorange'
         }"
       >
         {{ spot.value.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
       <td>{{ spot.value.PlaneOnSpot?.SerialID }}</td>
-      <td>{{ spot.value.OccupiedSince }}</td>
+      <td style="width: 70px;">{{ spot.value.OccupiedSince | date:'HH:mm:ss' }}</td>
+      <td>
+        <button
+          mat-raised-button
+          class="danger-btn"
+          *ngIf="IsEmergency"
+          (click)="isEmergencyCheck()"
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </button>
+        <button
+          mat-raised-button
+          class="safe-btn"
+          *ngIf="!IsEmergency"
+          (click)="isEmergencyCheck()"
+        >
+          Available
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -5,12 +5,20 @@
       <th>From</th>
       <th>Destination</th>
       <th>Direction</th>
+      <th>Emergency</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let flight of airplanes">
-      <td style="padding: 0 5px;">{{ flight.SerialID }}</td>
+      <td
+        style="padding: 0 5px"
+        [ngStyle]="{
+          'color': flight.IsEmergency ? 'red' : 'black'
+        }"
+      >
+        {{ flight.SerialID }}
+      </td>
       <td>{{ flight.Src }}</td>
       <td>{{ flight.Dst }}</td>
       <td
@@ -20,6 +28,24 @@
         }"
       >
         {{ flight.PlanesPurpose ? "Landing" : "Departing" }}
+      </td>
+      <td>
+        <button
+          mat-raised-button
+          class="danger-btn"
+          *ngIf="IsEmergency"
+          (click)="isEmergencyCheck()"
+        >
+          <i class="fas fa-exclamation-triangle"></i>
+        </button>
+        <button
+          mat-raised-button
+          class="safe-btn"
+          *ngIf="!IsEmergency"
+          (click)="isEmergencyCheck()"
+        >
+          Safe
+        </button>
       </td>
     </tr>
   </tbody>

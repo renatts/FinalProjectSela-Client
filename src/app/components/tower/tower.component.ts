@@ -14,7 +14,6 @@ export class TowerComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {
     const connection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Information)
       .withUrl(environment.SERVER_URL + 'test')
       .build();
 
@@ -32,7 +31,7 @@ export class TowerComponent implements OnInit {
     });
 
     connection.on('BroadcastSpots', (data) => {
-      this.spots = JSON.parse(data)
+      this.spots = JSON.parse(data);
     });
   }
 }

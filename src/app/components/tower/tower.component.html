@@ -3,7 +3,7 @@
 <div class="map">
   <div *ngFor="let spot of spots | keyvalue" class="flex-container">
     <div>
-      <div style="float: left; vertical-align: middle">
+      <div style="float: left">
         {{ spot.value.Spot }}
       </div>
       <i
@@ -11,8 +11,9 @@
           color: spot.value.PlaneOnSpot?.PlanesPurpose ? 'green' : 'red'
         }"
         class="fas fa-plane"
-        style="float: right"
       ></i>
+      <!-- <i class="fas fa-plane-departure" *ngIf="spot.value.PlaneOnSpot?.PlanesPurpose === 0"></i>
+      <i class="fas fa-plane-arrival" *ngIf="spot.value.PlaneOnSpot?.PlanesPurpose === 1"></i> -->
       {{ spot.value.PlaneOnSpot?.SerialID }}
     </div>
   </div>

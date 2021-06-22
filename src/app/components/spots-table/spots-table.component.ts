@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SpotsTableComponent implements OnInit {
   spots: Map<string, SpotData>;
+  IsEmergency: boolean = false;
 
   constructor() {}
   ngOnInit(): void {
@@ -28,7 +29,11 @@ export class SpotsTableComponent implements OnInit {
     }
 
     connection.on('BroadcastSpots', (data) => {
-      this.spots = JSON.parse(data)
+      this.spots = JSON.parse(data);
     });
+  }
+
+  isEmergencyCheck() {
+    this.IsEmergency = !this.IsEmergency;
   }
 }

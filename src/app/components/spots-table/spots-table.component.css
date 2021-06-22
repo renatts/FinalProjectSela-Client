@@ -6,7 +6,7 @@
 }
 
 .spots-header {
-  background-color: #04009a;
+  background-color: green;
   color: white;
 }
 
@@ -16,7 +16,7 @@ td {
   text-align: center;
 }
 
-th{
+th {
   padding: 10px;
 }
 
@@ -27,8 +27,22 @@ table {
 
 td {
   border-bottom: 1px solid #ddd;
+  padding: 5px;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+i {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.danger-btn {
+  background-color: white;
+}
+
+.safe-btn {
+  color: #04009a;
 }
