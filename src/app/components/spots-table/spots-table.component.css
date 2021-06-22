@@ -6,7 +6,7 @@
 }
 
 .spots-header {
-  background-color: green;
+  background-color: #04009a;
   color: white;
 }
 
@@ -44,5 +44,5 @@ i {
 }
 
 .safe-btn {
-  color: #04009a;
+  color: green;
 }
