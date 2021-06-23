@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,14 +11,15 @@ import { AppComponent } from './app.component';
 import { TowerComponent } from './components/tower/tower.component';
 import { SpotsTableComponent } from './components/spots-table/spots-table.component';
 import { FlightsTableComponent } from './components/flights-table/flights-table.component';
-import { AppRoutingModule } from './app-routing.module';
+
+import { SignalRService } from './services/signal-r.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TowerComponent,
     SpotsTableComponent,
-    FlightsTableComponent
+    FlightsTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,16 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    SignalRService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (signalrService: SignalRService) => () =>
+        signalrService.initiateSignalrConnection(),
+      deps: [SignalRService],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SpotData } from '../models/spotData';
 
@@ -7,43 +8,36 @@ import { SpotData } from '../models/spotData';
   providedIn: 'root',
 })
 export class SignalRService {
-  public spots: Map<string, SpotData>;
-  public broadcastedSpots: Map<string, SpotData>;
+  public connection: signalR.HubConnection;
+  public hubSpots: BehaviorSubject<Map<string, SpotData>>;
 
-  private connection: signalR.HubConnection;
-
-  public startConnection = () => {
-    this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(environment.SERVER_URL + 'test')
-      .build();
-    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
-      this.connection
-        .start()
-        .then(() => console.log('SignalR Connected!'))
-        .catch((err) => console.log('Error while starting connection: ' + err));
-    }
-  };
-
-  public addTransferSpotsDataListener(): Map<string, SpotData> {
-    let localSpots: Map<string, SpotData>;
-
-    this.connection.on('BroadcastSpots', (data) => {
-      localSpots = JSON.parse(data);
-    });
-    
-    console.log(localSpots);
-    return localSpots;
+  constructor() {
+    this.hubSpots = new BehaviorSubject<Map<string, SpotData>>(null);
   }
 
-  // public broadcastChartData = () => {
-  //   this.connection
-  //     .invoke('BroadcastSpotsData', this.spots)
-  //     .catch((err) => console.error(err));
-  // };
+  public initiateSignalrConnection(): Promise<any> {
+    return new Promise(() => {
+      this.connection = new signalR.HubConnectionBuilder()
+        .withUrl(environment.SERVER_URL + 'test') // the SignalR server url
+        .build();
 
-  // public addBroadcastSpotsDataListener = () => {
-  //   this.connection.on('BroadcastSpotsData', (data) => {
-  //     this.broadcastedSpots = data;
-  //   });
-  // };
+      this.setSignalrClientMethods();
+
+      this.connection.start();
+    });
+  }
+
+  private setSignalrClientMethods(): void {
+    this.connection.on('BroadcastSpots', (message: Map<string, SpotData>) => {
+      this.hubSpots.next(message);
+    });
+
+    // this.connection.on('UpdateProgressBar', (percentage: number) => {
+    //   this.progressPercentage.next(percentage);
+    // });
+
+    // this.connection.on('DisplayProgressMessage', (message: string) => {
+    //   this.progressMessage.next(message);
+    // });
+  }
 }
