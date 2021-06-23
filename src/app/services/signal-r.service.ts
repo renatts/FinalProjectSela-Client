@@ -1,40 +1,49 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { environment } from 'src/environments/environment';
+import { SpotData } from '../models/spotData';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignalRService {
+  public spots: Map<string, SpotData>;
+  public broadcastedSpots: Map<string, SpotData>;
+
   private connection: signalR.HubConnection;
 
-  constructor() {
+  public startConnection = () => {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(environment.HUB_URL)
+      .withUrl(environment.SERVER_URL + 'test')
       .build();
-
-    this.connect();
-    this.getMessage();
-  }
-
-  public connect() {
     if (this.connection.state === signalR.HubConnectionState.Disconnected) {
       this.connection
         .start()
-        .then(function () {
-          console.log('SignalR Connected!');
-        })
-        .catch((err) => console.log(err));
+        .then(() => console.log('SignalR Connected!'))
+        .catch((err) => console.log('Error while starting connection: ' + err));
     }
-  }
+  };
 
-  public getMessage() {
-    this.connection.on('BroadcastMessage', (message) => {
-      console.log(message);
+  public addTransferSpotsDataListener(): Map<string, SpotData> {
+    let localSpots: Map<string, SpotData>;
+
+    this.connection.on('BroadcastSpots', (data) => {
+      localSpots = JSON.parse(data);
     });
+    
+    console.log(localSpots);
+    return localSpots;
   }
 
-  public disconnect() {
-    this.connection.stop();
-  }
+  // public broadcastChartData = () => {
+  //   this.connection
+  //     .invoke('BroadcastSpotsData', this.spots)
+  //     .catch((err) => console.error(err));
+  // };
+
+  // public addBroadcastSpotsDataListener = () => {
+  //   this.connection.on('BroadcastSpotsData', (data) => {
+  //     this.broadcastedSpots = data;
+  //   });
+  // };
 }

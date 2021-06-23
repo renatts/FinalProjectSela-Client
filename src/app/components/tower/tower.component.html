@@ -16,5 +16,7 @@
       <i class="fas fa-plane-arrival" *ngIf="spot.value.PlaneOnSpot?.PlanesPurpose === 1"></i> -->
       {{ spot.value.PlaneOnSpot?.SerialID }}
     </div>
+
+    <button (click)="sendData()"></button>
   </div>
 </div>

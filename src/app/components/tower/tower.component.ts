@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { SpotData } from 'src/app/models/spotData';
+import { SignalRService } from 'src/app/services/signal-r.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,16 +11,26 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./tower.component.css'],
 })
 export class TowerComponent implements OnInit {
-  spots: Map<string, SpotData>;
+  public spots: Map<string, SpotData>;
+  connection = new signalR.HubConnectionBuilder()
+    .withUrl(environment.SERVER_URL + 'test')
+    .build();
 
-  constructor() {}
+  connection2 = new signalR.HubConnectionBuilder()
+    .withUrl(environment.SERVER_URL + 'transfer')
+    .build();
+
+  constructor(public signalRService: SignalRService) {}
   ngOnInit(): void {
-    const connection = new signalR.HubConnectionBuilder()
-      .withUrl(environment.SERVER_URL + 'test')
-      .build();
+    // this.signalRService.startConnection();
+    // this.spots = this.signalRService.addTransferSpotsDataListener();
 
-    if (connection.state === signalR.HubConnectionState.Disconnected) {
-      connection
+    // const connection = new signalR.HubConnectionBuilder()
+    //   .withUrl(environment.SERVER_URL + 'test')
+    //   .build();
+
+    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+      this.connection
         .start()
         .then(function () {
           console.log('SignalR Connected!');
@@ -26,12 +38,12 @@ export class TowerComponent implements OnInit {
         .catch((err) => console.log(err));
     }
 
-    connection.on('BroadcastMessage', () => {
-      console.log('Broadcast Message!!!!!');
-    });
-
-    connection.on('BroadcastSpots', (data) => {
+    this.connection.on('BroadcastSpots', (data) => {
       this.spots = JSON.parse(data);
     });
+  }
+
+  sendData(): void {
+    this.connection2.invoke('TransferHello', () => {});
   }
 }
