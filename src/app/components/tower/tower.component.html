@@ -1,22 +1,27 @@
+<!--/ Spots Table /-->
 <atc-spots-table></atc-spots-table>
+
+<!--/ Flights Table /-->
 <atc-flights-table></atc-flights-table>
+
+<!--/ Runways Table /-->
+<atc-runway-emergency-set></atc-runway-emergency-set>
+
+<!--/ Map /-->
 <div class="map">
-  <div *ngFor="let spot of spots | keyvalue" class="flex-container">
+  <div *ngFor="let spot of spots" class="flex-container">
     <div>
       <div style="float: left">
-        {{ spot.value.Spot }}
+        {{ spot.Spot }}
       </div>
       <i
         [ngStyle]="{
-          color: spot.value.PlaneOnSpot?.PlanesPurpose ? 'green' : 'red'
+          color: spot.PlaneOnSpot?.PlanesPurpose ? 'green' : 'red'
         }"
         class="fas fa-plane"
+        *ngIf="!spot.IsAvailable"
       ></i>
-      <!-- <i class="fas fa-plane-departure" *ngIf="spot.value.PlaneOnSpot?.PlanesPurpose === 0"></i>
-      <i class="fas fa-plane-arrival" *ngIf="spot.value.PlaneOnSpot?.PlanesPurpose === 1"></i> -->
-      {{ spot.value.PlaneOnSpot?.SerialID }}
+      {{ spot.PlaneOnSpot?.SerialID }}
     </div>
-
-    <button (click)="sendData()"></button>
   </div>
 </div>

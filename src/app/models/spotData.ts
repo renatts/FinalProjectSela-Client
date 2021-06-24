@@ -5,7 +5,7 @@ export class SpotData {
   IsAvailable: boolean;
   PlaneOnSpot: AirPlane;
   OccupiedSince: Date;
-  IsEmergency: boolean; // added
+  IsActive: boolean; // added
 
   constructor() {}
 }

@@ -5,41 +5,48 @@
       <th>State</th>
       <th>Flight</th>
       <th>Time</th>
-      <th>Emergency</th>
+      <th>Active</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let spot of spots | keyvalue">
-      <td>{{ spot.value.Spot }}</td>
+    <tr
+      *ngFor="let spot of spots"
+      [ngStyle]="{
+        'color': spot.IsActive ? 'black' : 'red'
+      }"
+    >
+      <td>{{ spot.Spot}}</td>
       <td
         style="color: white"
         [ngStyle]="{
-          'background-color': spot.value.IsAvailable
+          'background-color': spot.IsAvailable
             ? 'lightskyblue'
             : 'darkorange'
         }"
       >
-        {{ spot.value.IsAvailable ? "IDLE" : "BUSY" }}
+        {{ spot.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
-      <td>{{ spot.value.PlaneOnSpot?.SerialID }}</td>
-      <td style="width: 70px;">{{ spot.value.OccupiedSince | date:'HH:mm:ss' }}</td>
+      <td>{{ spot.PlaneOnSpot?.SerialID }}</td>
+      <td style="width: 70px">
+        {{ spot.OccupiedSince | date: "HH:mm:ss" }}
+      </td>
       <td>
         <button
           mat-raised-button
           class="danger-btn"
-          *ngIf="IsEmergency"
-          (click)="isEmergencyCheck()"
+          *ngIf="spot.IsActive"
+          (click)="sendEmergencySpot(spot.Spot)"
         >
           <i class="fas fa-exclamation-triangle"></i>
         </button>
         <button
           mat-raised-button
           class="safe-btn"
-          *ngIf="!IsEmergency"
-          (click)="isEmergencyCheck()"
+          *ngIf="!spot.IsActive"
+          (click)="cancelEmergencySpot(spot.Spot)"
         >
-          Available
+          Cancel
         </button>
       </td>
     </tr>

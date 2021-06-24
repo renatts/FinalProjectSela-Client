@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { SpotData } from 'src/app/models/spotData';
-import { SignalRService } from 'src/app/services/signal-r.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,49 +9,56 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./tower.component.css'],
 })
 export class TowerComponent implements OnInit {
-  public spots: Map<string, SpotData>;
+  connection: signalR.HubConnection;
+  spots: Array<SpotData>;
 
-  constructor(public signalRService: SignalRService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.signalRService.connection.invoke('Hello');
+    this.connection = new signalR.HubConnectionBuilder()
+      .configureLogging(signalR.LogLevel.Information)
+      .withUrl(environment.HUB_URL)
+      .build();
 
-    this.signalRService.hubSpots.subscribe((message: Map<string, SpotData>) => {
-      this.spots = message;
+    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+      this.connection
+        .start()
+        .then(function () {
+          console.log('SignalR Connected!');
+        })
+        .catch((err) => console.log(err));
+    }
+
+    this.connection.on('BroadcastSpots', (data) => {
+      this.spots = JSON.parse(data);
     });
   }
-  // connection = new signalR.HubConnectionBuilder()
-  //   .withUrl(environment.SERVER_URL + 'test')
-  //   .build();
-
-  // connection2 = new signalR.HubConnectionBuilder()
-  //   .withUrl(environment.SERVER_URL + 'transfer')
-  //   .build();
-
-  // constructor(public signalRService: SignalRService) {}
-  // ngOnInit(): void {
-  //   // this.signalRService.startConnection();
-  //   // this.spots = this.signalRService.addTransferSpotsDataListener();
-
-  //   // const connection = new signalR.HubConnectionBuilder()
-  //   //   .withUrl(environment.SERVER_URL + 'test')
-  //   //   .build();
-
-  //   if (this.connection.state === signalR.HubConnectionState.Disconnected) {
-  //     this.connection
-  //       .start()
-  //       .then(function () {
-  //         console.log('SignalR Connected!');
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-
-  //   this.connection.on('BroadcastSpots', (data) => {
-  //     this.spots = JSON.parse(data);
-  //   });
-  // }
-
-  // sendData(): void {
-  //   this.connection2.invoke('TransferHello', () => {});
-  // }
 }
+
+///////////////////////////////////////////////////////////////
+
+//this.signalRService.connection.invoke('Hello');
+
+// this.signalRService.hubSpots.subscribe((message: Map<string, SpotData>) => {
+//   this.spots = message;
+// });
+
+// connection = new signalR.HubConnectionBuilder()
+//   .configureLogging(signalR.LogLevel.Information)
+//   .withUrl(environment.SERVER_URL + 'test')
+//   .build();
+
+// if (connection.state === signalR.HubConnectionState.Disconnected) {
+//   this.connection
+//     .start()
+//     .then(function () {
+//       console.log('SignalR Connected!');
+//     })
+//     .catch((err) => console.log(err));
+// }
+
+// this.connection.on('BroadcastSpots', (data) => {
+//   this.spots = JSON.parse(data);
+// });
+
+// this.sendData();

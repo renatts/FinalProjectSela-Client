@@ -1,4 +1,5 @@
 export class AirPlane {
+  PlaneId: number;
   SerialID: number;
   Src: string;
   Dst: string;

@@ -9,17 +9,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./flights-table.component.css'],
 })
 export class FlightsTableComponent implements OnInit {
+  connection: signalR.HubConnection;
   airplanes: Array<AirPlane>;
-  IsEmergency: boolean = false;
 
-  ngOnInit() {
-    const connection = new signalR.HubConnectionBuilder()
+  ngOnInit(): void {
+    this.connection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Information)
-      .withUrl(environment.SERVER_URL + 'test')
+      .withUrl(environment.HUB_URL)
       .build();
 
-    if (connection.state === signalR.HubConnectionState.Disconnected) {
-      connection
+    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
+      this.connection
         .start()
         .then(function () {
           console.log('SignalR Connected!');
@@ -27,12 +27,19 @@ export class FlightsTableComponent implements OnInit {
         .catch((err) => console.log(err));
     }
 
-    connection.on('BroadcastWaitingAirplanes', (data) => {
+    this.connection.on('BroadcastWaitingAirplanes', (data) => {
       this.airplanes = JSON.parse(data);
     });
   }
 
-  isEmergencyCheck() {
-    this.IsEmergency = !this.IsEmergency;
+  sendEmergencyData(id: number) {
+    if (this.connection.state === signalR.HubConnectionState.Connected) {
+      this.connection
+        .invoke('InformEmergencyPlane', id.toString())
+        .then(() => console.log('InformEmergencyPlane succeeded!'))
+        .catch((error) => {
+          console.log(`SignalrDemoHub.InformEmergencyPlane() error: ${error}`);
+        });
+    }
   }
 }
