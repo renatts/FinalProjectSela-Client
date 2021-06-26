@@ -1,6 +1,9 @@
 <!--/ Spots Table /-->
 <atc-spots-table></atc-spots-table>
 
+<!--/ Emergencies Table /-->
+<atc-emergencies-table></atc-emergencies-table>
+
 <!--/ Flights Table /-->
 <atc-flights-table></atc-flights-table>
 
@@ -16,7 +19,11 @@
       </div>
       <i
         [ngStyle]="{
-          color: spot.PlaneOnSpot?.PlanesPurpose ? 'green' : 'red'
+          color: spot.PlaneOnSpot?.IsEmergency
+            ? 'red'
+            : spot.PlaneOnSpot?.PlanesPurpose
+            ? 'green'
+            : 'orange'
         }"
         class="fas fa-plane"
         *ngIf="!spot.IsAvailable"

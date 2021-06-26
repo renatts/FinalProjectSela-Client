@@ -29,9 +29,9 @@ export class SpotsTableComponent implements OnInit {
     }
 
     this.connection.on('BroadcastSpots', (data) => {
-      console.log(data);
+      //console.log(data);
       this.spots = JSON.parse(data);
-      console.log(this.spots);
+      //console.log(this.spots);
     });
   }
 

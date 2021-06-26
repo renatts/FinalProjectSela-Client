@@ -3,6 +3,7 @@
     <tr class="spots-header">
       <th><i class="fas fa-broadcast-tower" style="color: white"></i></th>
       <th>State</th>
+      <th>Relevance</th>
       <th>Flight</th>
       <th>Time</th>
       <th>Active</th>
@@ -13,22 +14,21 @@
     <tr
       *ngFor="let spot of spots"
       [ngStyle]="{
-        'color': spot.IsActive ? 'black' : 'red'
+        color: spot.IsActive ? 'black' : 'red'
       }"
     >
-      <td>{{ spot.Spot}}</td>
+      <td>{{ spot.Spot }}</td>
       <td
         style="color: white"
         [ngStyle]="{
-          'background-color': spot.IsAvailable
-            ? 'lightskyblue'
-            : 'darkorange'
+          'background-color': spot.IsAvailable ? 'lightskyblue' : 'darkblue'
         }"
       >
         {{ spot.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
+      <td>{{ spot.Relevance }}</td>
       <td>{{ spot.PlaneOnSpot?.SerialID }}</td>
-      <td style="width: 70px">
+      <td style="width: 70px;">
         {{ spot.OccupiedSince | date: "HH:mm:ss" }}
       </td>
       <td>

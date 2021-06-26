@@ -24,10 +24,10 @@
       <td
         style="color: white"
         [ngStyle]="{
-          'background-color': flight.PlanesPurpose ? 'green' : 'red'
+          'background-color': flight.PlanesPurpose ? 'green' : 'orange'
         }"
       >
-        {{ flight.PlanesPurpose ? "Landing" : "Departing" }}
+        {{ flight.PlanesPurpose ? "Landing" : "Takeoff" }}
       </td>
       <td>
         <button

@@ -13,8 +13,10 @@ import { TowerComponent } from './components/tower/tower.component';
 import { SpotsTableComponent } from './components/spots-table/spots-table.component';
 import { FlightsTableComponent } from './components/flights-table/flights-table.component';
 
-import { SignalRService } from './services/signal-r.service';
 import { RunwayEmergencySetComponent } from './components/runway-emergency-set/runway-emergency-set.component';
+import { EmergenciesTableComponent } from './components/emergencies-table/emergencies-table.component';
+import { DisplaySpotsOrderComponent } from './components/display-spots-order/display-spots-order.component';
+import { MessagesOutputComponent } from './components/messages-output/messages-output.component';
 
 
 @NgModule({
@@ -24,6 +26,9 @@ import { RunwayEmergencySetComponent } from './components/runway-emergency-set/r
     SpotsTableComponent,
     FlightsTableComponent,
     RunwayEmergencySetComponent,
+    EmergenciesTableComponent,
+    DisplaySpotsOrderComponent,
+    MessagesOutputComponent,
   ],
   imports: [
     BrowserModule,

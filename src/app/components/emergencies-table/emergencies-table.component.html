@@ -1,0 +1,35 @@
+
+<table class="emergencies">
+    <thead>
+      <tr class="emergencies-header">
+        <th>Flight</th>
+        <th>From</th>
+        <th>Destination</th>
+        <th>Direction</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let emergencyPlane of emergencyPlanes">
+        <td
+          [ngStyle]="{
+            'background-color': emergencyPlane.IsEmergency ? 'red' : 'rgba(0,0,0,0)'
+          }"
+          style="padding: 0 5px"
+        >
+          {{ emergencyPlane.SerialID }}
+        </td>
+        <td>{{ emergencyPlane.Src }}</td>
+        <td>{{ emergencyPlane.Dst }}</td>
+        <td
+          style="color: white"
+          [ngStyle]="{
+            'background-color': emergencyPlane.PlanesPurpose ? 'green' : 'orange'
+          }"
+        >
+          {{ emergencyPlane.PlanesPurpose ? "Landing" : "Takeoff" }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

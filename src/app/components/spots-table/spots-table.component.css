@@ -41,8 +41,12 @@ i {
 
 .danger-btn {
   background-color: white;
+  width: 70px;
+  height: 35px;
 }
 
 .safe-btn {
   color: green;
+  width: 70px;
+  height: 35px;
 }

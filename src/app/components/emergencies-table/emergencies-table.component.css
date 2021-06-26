@@ -1,16 +1,14 @@
-.runways {
-  margin-top: 15px;
+.emergencies {
+  width: 20%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 15px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  margin-left: -180px;
 }
 
-.runways-position{
-  display: grid;
-  justify-content: center;
-}
-
-.runways-header {
-  background-color: #04009a;
+.emergencies-header {
+  background-color: red;
   color: white;
 }
 
@@ -36,4 +34,3 @@ td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
