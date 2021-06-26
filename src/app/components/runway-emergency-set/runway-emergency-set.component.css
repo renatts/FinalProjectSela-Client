@@ -1,7 +1,8 @@
 .runways {
   margin-top: 15px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  margin-left: -180px;
+  position: relative;
+  left: -280px;
 }
 
 .runways-position{

@@ -1,0 +1,13 @@
+.message-container {
+  padding-top: 50px;
+  display: grid;
+  justify-content: center;
+}
+
+.message {
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border: cornflowerblue 5px solid;
+  border-radius: 10px;
+}

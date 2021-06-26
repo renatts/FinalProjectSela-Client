@@ -3,7 +3,7 @@
     <tr class="spots-header">
       <th><i class="fas fa-broadcast-tower" style="color: white"></i></th>
       <th>State</th>
-      <th>Relevance</th>
+      <!-- <th>Relevance</th> -->
       <th>Flight</th>
       <th>Time</th>
       <th>Active</th>
@@ -26,14 +26,16 @@
       >
         {{ spot.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
-      <td>{{ spot.Relevance }}</td>
+      <!-- <td>{{ spot.Relevance }}</td> -->
       <td>{{ spot.PlaneOnSpot?.SerialID }}</td>
-      <td style="width: 70px;">
+      <td style="width: 70px">
         {{ spot.OccupiedSince | date: "HH:mm:ss" }}
       </td>
       <td>
         <button
           mat-raised-button
+          matTooltip="Tooltip on the right side of  the element"
+          matTooltipPosition="right"
           class="danger-btn"
           *ngIf="spot.IsActive"
           (click)="sendEmergencySpot(spot.Spot)"

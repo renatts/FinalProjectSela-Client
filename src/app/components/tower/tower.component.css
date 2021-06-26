@@ -1,5 +1,4 @@
 .map {
-  padding-top: 40px;
   display: grid;
   justify-content: center;
 }
@@ -23,4 +22,8 @@ i {
   font-size: 1.5rem;
   float: right;
   color: white;
+}
+
+body{
+  position: relative;
 }

@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule} from '@angular/material/checkbox'
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { TowerComponent } from './components/tower/tower.component';
@@ -34,6 +35,7 @@ import { MessagesOutputComponent } from './components/messages-output/messages-o
     BrowserModule,
     MatTableModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatCheckboxModule,
     MatButtonModule,
     HttpClientModule,
