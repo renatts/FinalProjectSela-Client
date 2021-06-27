@@ -1,10 +1,10 @@
 <table class="paths">
   <tr>
-    <th class="paths-header" style="background-color: green;">Landing</th>
-    <td>1, 2, 3, 4, 5, 6,7</td>
+    <th class="paths-header" style="background-color: green">Landing</th>
+    <td *ngFor="let spot of landingsOrder">{{ spot }} ></td>
   </tr>
   <tr>
-    <th class="paths-header" style="background-color: orange;">Takeoff</th>
-    <td>6,7, 8, 4</td> 
+    <th class="paths-header" style="background-color: orange">Takeoff</th>
+    <td *ngFor="let spot of takeoffsOrder">{{ spot }} ></td>
   </tr>
 </table>

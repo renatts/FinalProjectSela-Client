@@ -1,5 +1,5 @@
 <div class="emergencies-container">
-  <table class="emergencies">
+  <table class="emergencies" *ngIf="emergencyPlanes?.length > 0">
     <thead>
       <tr class="emergencies-header">
         <th>Flight</th>
@@ -14,7 +14,7 @@
         <td
           [ngStyle]="{
             'background-color': emergencyPlane.IsEmergency
-              ? 'red'
+              ? 'rgba(255,0,0,0.6)'
               : 'rgba(0,0,0,0)'
           }"
           style="padding: 0 5px; color: white"
@@ -26,12 +26,11 @@
         <td
           style="color: white"
           [ngStyle]="{
-            'background-color': emergencyPlane.PlanesPurpose
-              ? 'green'
-              : 'orange'
+            'background-color':
+              emergencyPlane.PlanesPurpose === 'Landing' ? 'green' : 'orange'
           }"
         >
-          {{ emergencyPlane.PlanesPurpose ? "Landing" : "Takeoff" }}
+          {{ emergencyPlane.PlanesPurpose }}
         </td>
       </tr>
     </tbody>

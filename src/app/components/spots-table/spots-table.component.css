@@ -50,3 +50,41 @@ i {
   width: 70px;
   height: 35px;
 }
+
+.danger-btn .tooltiptext {
+  visibility: hidden;
+  background-color: rgba(1,1,1,0.6);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+}
+
+.danger-btn:hover .tooltiptext {
+  visibility: visible;
+}
+
+.safe-btn .tooltiptext {
+  visibility: hidden;
+  background-color: rgba(1,1,1,0.6);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 115%;
+}
+
+.safe-btn:hover .tooltiptext {
+  visibility: visible;
+}

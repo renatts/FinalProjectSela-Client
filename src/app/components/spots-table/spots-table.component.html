@@ -3,7 +3,6 @@
     <tr class="spots-header">
       <th><i class="fas fa-broadcast-tower" style="color: white"></i></th>
       <th>State</th>
-      <!-- <th>Relevance</th> -->
       <th>Flight</th>
       <th>Time</th>
       <th>Active</th>
@@ -17,7 +16,19 @@
         color: spot.IsActive ? 'black' : 'red'
       }"
     >
-      <td>{{ spot.Spot }}</td>
+      <td
+        [ngStyle]="{
+          'background-color':
+            spot.Relevance.includes('Takeoff') &&
+            spot.Relevance.includes('Landing')
+              ? 'rgba(192,192,192,0.5)'
+              : spot.Relevance.includes('Takeoff')
+              ? 'rgba(245,171,53,0.5)'
+              : 'rgba(0,255,0,0.5)'
+        }"
+      >
+        {{ spot.Spot }}
+      </td>
       <td
         style="color: white"
         [ngStyle]="{
@@ -26,7 +37,6 @@
       >
         {{ spot.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
-      <!-- <td>{{ spot.Relevance }}</td> -->
       <td>{{ spot.PlaneOnSpot?.SerialID }}</td>
       <td style="width: 70px">
         {{ spot.OccupiedSince | date: "HH:mm:ss" }}
@@ -34,13 +44,12 @@
       <td>
         <button
           mat-raised-button
-          matTooltip="Tooltip on the right side of  the element"
-          matTooltipPosition="right"
           class="danger-btn"
           *ngIf="spot.IsActive"
           (click)="sendEmergencySpot(spot.Spot)"
         >
           <i class="fas fa-exclamation-triangle"></i>
+          <span class="tooltiptext">Press to deactivate</span>
         </button>
         <button
           mat-raised-button
@@ -48,6 +57,7 @@
           *ngIf="!spot.IsActive"
           (click)="cancelEmergencySpot(spot.Spot)"
         >
+          <span class="tooltiptext">Cancel deactivation</span>
           Cancel
         </button>
       </td>

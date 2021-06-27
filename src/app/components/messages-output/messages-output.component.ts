@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class MessagesOutputComponent implements OnInit {
   connection: signalR.HubConnection;
   messages: Array<string>;
+  isShown: boolean;
 
   constructor() {}
   ngOnInit(): void {
@@ -27,8 +28,11 @@ export class MessagesOutputComponent implements OnInit {
         .catch((err) => console.log(err));
     }
 
-    this.connection.on('BroadcastNoMovementsAvailable', (data) => {
-      console.log(data);
+    this.connection.on('BroadcastServerMessages', (data) => {
+      this.isShown = true;
+      setTimeout(() => {
+        this.isShown = false;
+      }, 3000);
       this.messages = JSON.parse(data);
       console.log(this.messages);
     });

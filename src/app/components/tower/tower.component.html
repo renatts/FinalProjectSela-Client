@@ -16,7 +16,17 @@
 <!--/ Map /-->
 <div class="map">
   <div *ngFor="let spot of spots" class="flex-container">
-    <div>
+    <div
+      [ngStyle]="{
+        'background-color':
+          spot.Relevance.includes('Takeoff') &&
+          spot.Relevance.includes('Landing')
+            ? 'rgba(192,192,192,0.5)'
+            : spot.Relevance.includes('Takeoff')
+            ? 'rgba(245,171,53,0.4)'
+            : 'rgba(0,255,0,0.3)'
+      }"
+    >
       <div style="float: left">
         {{ spot.Spot }}
       </div>
@@ -24,7 +34,7 @@
         [ngStyle]="{
           color: spot.PlaneOnSpot?.IsEmergency
             ? 'red'
-            : spot.PlaneOnSpot?.PlanesPurpose
+            : spot.PlaneOnSpot?.PlanesPurpose === 'Landing'
             ? 'green'
             : 'orange'
         }"

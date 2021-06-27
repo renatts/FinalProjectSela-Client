@@ -15,6 +15,10 @@
   border-collapse: collapse;
 }
 
+.emergencies-container {
+  position: fixed;
+}
+
 .emergencies-header tbody {
   display: block;
   width: 100%;
@@ -31,6 +35,27 @@
   padding: 5px;
   text-align: left;
   width: 200px;
+}
+
+td {
+  text-align: center;
+}
+
+thead,
+tbody {
+  display: block;
+}
+
+tbody {
+  max-height: 80px; /* Just for the demo          */
+  overflow-y: auto; /* Trigger vertical scroll    */
+  overflow-x: hidden; /* Hide the horizontal scroll */
+}
+
+table,
+th,
+td {
+  text-align: center;
 }
 
 /* table,

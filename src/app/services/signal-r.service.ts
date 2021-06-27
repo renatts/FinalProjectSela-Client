@@ -10,16 +10,17 @@ import { SpotData } from '../models/spotData';
 })
 export class SignalRService {
   connection: signalR.HubConnection;
-  hubSpots: BehaviorSubject<Map<string, SpotData>>;
+  hubSpots: BehaviorSubject<Array<SpotData>>;
 
   constructor() {
-    this.hubSpots = new BehaviorSubject<Map<string, SpotData>>(null);
+    this.hubSpots = new BehaviorSubject<Array<SpotData>>(null);
+    this.initiateSignalRConnection();
   }
 
   public initiateSignalRConnection(): Promise<any> {
     return new Promise(() => {
       this.connection = new signalR.HubConnectionBuilder()
-        .withUrl(environment.SERVER_URL + 'test') // the SignalR server url
+        .withUrl(environment.HUB_URL) // the SignalR server url
         .build();
 
       this.setSignalrClientMethods();
@@ -39,21 +40,22 @@ export class SignalRService {
 
   private setSignalrClientMethods(): void {
     this.connection.on('BroadcastSpots', (spots: string) => {
-      this.hubSpots.next(this.jsonToStrMap(spots));
+      console.log(spots)
+      this.hubSpots.next(JSON.parse(spots));
     });
-  }
+   }
 
-  objToStrMap(obj) {
-    let strMap = new Map();
-    for (let k of Object.keys(obj)) {
-      strMap.set(k, obj[k]);
-    }
-    return strMap;
-  }
+  // objToStrMap(obj) {
+  //   let strMap = new Map();
+  //   for (let k of Object.keys(obj)) {
+  //     strMap.set(k, obj[k]);
+  //   }
+  //   return strMap;
+  // }
 
-  jsonToStrMap(jsonStr) {
-    return this.objToStrMap(JSON.parse(jsonStr));
-  }
+  // jsonToStrMap(jsonStr) {
+  //   return this.objToStrMap(JSON.parse(jsonStr));
+  // }
 }
 
 

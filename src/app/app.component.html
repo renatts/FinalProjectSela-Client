@@ -6,13 +6,9 @@
     </div>
     <ng-container>
       <span class="nav-tool-items">
-        <a
-          mat-button
-          class="start-btn"
-          routerLink="start"
-          routerLinkActive="active"
-          >Start<i class="fas fa-power-off power-logo"></i
-        ></a>
+        <button mat-button class="start-btn" (click)="start()">
+          <i class="fas fa-power-off power-logo"></i>
+        </button>
       </span>
     </ng-container>
   </mat-toolbar>

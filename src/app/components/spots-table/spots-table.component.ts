@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './spots-table.component.html',
   styleUrls: ['./spots-table.component.css'],
 })
+
 export class SpotsTableComponent implements OnInit {
   connection: signalR.HubConnection;
   spots: Array<SpotData>;
@@ -29,9 +30,9 @@ export class SpotsTableComponent implements OnInit {
     }
 
     this.connection.on('BroadcastSpots', (data) => {
-      //console.log(data);
+      console.log(data);
       this.spots = JSON.parse(data);
-      //console.log(this.spots);
+      console.log(this.spots);
     });
   }
 

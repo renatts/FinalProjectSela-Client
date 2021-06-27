@@ -7,7 +7,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule} from '@angular/material/checkbox';
-import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { TowerComponent } from './components/tower/tower.component';
@@ -18,7 +17,6 @@ import { RunwayEmergencySetComponent } from './components/runway-emergency-set/r
 import { EmergenciesTableComponent } from './components/emergencies-table/emergencies-table.component';
 import { DisplaySpotsOrderComponent } from './components/display-spots-order/display-spots-order.component';
 import { MessagesOutputComponent } from './components/messages-output/messages-output.component';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +33,6 @@ import { MessagesOutputComponent } from './components/messages-output/messages-o
     BrowserModule,
     MatTableModule,
     MatToolbarModule,
-    MatTooltipModule,
     MatCheckboxModule,
     MatButtonModule,
     HttpClientModule,

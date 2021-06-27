@@ -24,10 +24,11 @@
       <td
         style="color: white"
         [ngStyle]="{
-          'background-color': flight.PlanesPurpose ? 'green' : 'orange'
+          'background-color':
+            flight.PlanesPurpose === 'Landing' ? 'green' : 'orange'
         }"
       >
-        {{ flight.PlanesPurpose ? "Landing" : "Takeoff" }}
+        {{ flight.PlanesPurpose }}
       </td>
       <td>
         <button
@@ -35,6 +36,7 @@
           class="danger-btn"
           (click)="sendEmergencyData(flight.PlaneId)"
         >
+          <span class="tooltiptext">Press to add emergency</span>
           <i class="fas fa-exclamation-triangle"></i>
         </button>
       </td>

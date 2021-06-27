@@ -30,9 +30,8 @@ export class DisplaySpotsOrderComponent implements OnInit {
     }
 
     this.connection.on('BroadcastLandingsRunwayOrder', (data) => {
-      console.log(data);
       this.landingsOrder = JSON.parse(data);
-      console.log(this.landingsOrder);
+      
     });
 
     this.connection.on('BroadcastTakeoffsRunwayOrder', (data) => {
