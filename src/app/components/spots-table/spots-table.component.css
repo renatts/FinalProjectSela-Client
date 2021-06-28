@@ -43,6 +43,7 @@ i {
   background-color: white;
   width: 70px;
   height: 35px;
+  z-index: -1;
 }
 
 .safe-btn {
@@ -62,8 +63,9 @@ i {
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
-  top: -5px;
-  left: 115%;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
 }
 
 .danger-btn:hover .tooltiptext {
@@ -81,8 +83,9 @@ i {
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
-  top: -5px;
-  left: 115%;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
 }
 
 .safe-btn:hover .tooltiptext {

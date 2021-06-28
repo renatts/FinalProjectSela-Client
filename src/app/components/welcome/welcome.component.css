@@ -8,12 +8,12 @@
   height: 200px;
 }
 
-.welcome-inner:hover {
+/* .welcome-inner:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .welcome-inner {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); */
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 20px;
   padding: 100px;
@@ -37,10 +37,10 @@ img {
 @keyframes slide {
   0%,
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(20deg);
   }
 
   50% {
-    transform: translate(25px, -25px) rotate(0deg);
+    transform: translate(85px, -85px) rotate(5deg);
   }
 }

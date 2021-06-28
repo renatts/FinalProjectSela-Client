@@ -12,9 +12,12 @@
         <td>{{ runway }}</td>
         <td>
           <mat-checkbox
+            class="checkbox"
             name="{{ runway }}"
             (change)="sendEmergencyRunway($event)"
-          ></mat-checkbox>
+          >
+            <span class="tooltiptext">Check to add emergency</span></mat-checkbox
+          >
         </td>
       </tr>
     </tbody>
