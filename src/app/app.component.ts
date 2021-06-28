@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'atc-root',
@@ -9,12 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title: string = 'Airport Traffic Control';
-  isCollapsed: boolean = true;
+  isCollapsed: boolean;
 
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router) {}
 
   start() {
-    this.http.get(environment.SERVER_URL + 'Airport/start').subscribe();
+    this.toggleCollapse();
+    this.router.navigateByUrl('/airport');
   }
 
   toggleCollapse() {

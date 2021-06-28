@@ -17,6 +17,7 @@ import { RunwayEmergencySetComponent } from './components/runway-emergency-set/r
 import { EmergenciesTableComponent } from './components/emergencies-table/emergencies-table.component';
 import { DisplaySpotsOrderComponent } from './components/display-spots-order/display-spots-order.component';
 import { MessagesOutputComponent } from './components/messages-output/messages-output.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MessagesOutputComponent } from './components/messages-output/messages-o
     EmergenciesTableComponent,
     DisplaySpotsOrderComponent,
     MessagesOutputComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,14 +41,6 @@ import { MessagesOutputComponent } from './components/messages-output/messages-o
     AppRoutingModule,
   ],
   providers: [
-    // SignalRService,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (signalRService: SignalRService) => () =>
-    //     signalRService.initiateSignalRConnection(),
-    //   deps: [SignalRService],
-    //   multi: true,
-    // },
   ],
   bootstrap: [AppComponent],
 })

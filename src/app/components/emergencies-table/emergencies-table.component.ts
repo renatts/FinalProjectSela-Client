@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as signalR from '@microsoft/signalr';
 import { AirPlane } from 'src/app/models/airPlane';
-import { environment } from 'src/environments/environment';
+import { SignalRService } from 'src/app/services/signal-r.service';
 
 @Component({
   selector: 'atc-emergencies-table',
@@ -9,26 +8,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./emergencies-table.component.css'],
 })
 export class EmergenciesTableComponent implements OnInit {
-  connection: signalR.HubConnection;
-  emergencyPlanes: Array<AirPlane>; 
+  emergencyPlanes: Array<AirPlane>;
+
+  constructor(private signalRService: SignalRService) {}
 
   ngOnInit(): void {
-    this.connection = new signalR.HubConnectionBuilder()
-      .configureLogging(signalR.LogLevel.Information)
-      .withUrl(environment.HUB_URL)
-      .build();
-
-    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
-      this.connection
-        .start()
-        .then(function () {
-          console.log('SignalR Connected!');
-        })
-        .catch((err) => console.log(err));
-    }
-
-    this.connection.on('BroadcastEmergencyPlanes', (data) => {
-      this.emergencyPlanes = JSON.parse(data);
+    this.signalRService.hubEmergencyAirplanes.subscribe((emergencyPlanes: Array<AirPlane>) => {
+      this.emergencyPlanes = emergencyPlanes;
     });
   }
 }

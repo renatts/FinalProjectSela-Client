@@ -12,12 +12,11 @@
 .start-btn {
   background-color: red;
   color: white;
-  width: 40px;
+  width: 30px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .power-logo {
-  margin-left: 5px;
   color: white;
 }
 

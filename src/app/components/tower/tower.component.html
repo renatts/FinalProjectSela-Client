@@ -1,50 +1,54 @@
-<!--/ Spots Table /-->
-<atc-spots-table></atc-spots-table>
+<body>
+  <!-- onload="setTimeout(()=>{history.go(-2)}, 4000);" -->
+  
+  <!--/ Spots Table /-->
+  <atc-spots-table></atc-spots-table>
 
-<!--/ Emergencies Table /-->
-<atc-emergencies-table></atc-emergencies-table>
+  <!--/ Emergencies Table /-->
+  <atc-emergencies-table></atc-emergencies-table>
 
-<!--/ Flights Table /-->
-<atc-flights-table></atc-flights-table>
+  <!--/ Flights Table /-->
+  <atc-flights-table></atc-flights-table>
 
-<!--/ Runways Table /-->
-<atc-runway-emergency-set></atc-runway-emergency-set>
+  <!--/ Runways Table /-->
+  <atc-runway-emergency-set></atc-runway-emergency-set>
 
-<!--/ Spots Order /-->
-<atc-display-spots-order></atc-display-spots-order>
+  <!--/ Spots Order /-->
+  <atc-display-spots-order></atc-display-spots-order>
 
-<!--/ Map /-->
-<div class="map">
-  <div *ngFor="let spot of spots" class="flex-container">
-    <div
-      [ngStyle]="{
-        'background-color':
-          spot.Relevance.includes('Takeoff') &&
-          spot.Relevance.includes('Landing')
-            ? 'rgba(192,192,192,0.5)'
-            : spot.Relevance.includes('Takeoff')
-            ? 'rgba(245,171,53,0.4)'
-            : 'rgba(0,255,0,0.3)'
-      }"
-    >
-      <div style="float: left">
-        {{ spot.Spot }}
-      </div>
-      <i
+  <!--/ Map /-->
+  <div class="map">
+    <div *ngFor="let spot of spots" class="flex-container">
+      <div
         [ngStyle]="{
-          color: spot.PlaneOnSpot?.IsEmergency
-            ? 'red'
-            : spot.PlaneOnSpot?.PlanesPurpose === 'Landing'
-            ? 'green'
-            : 'orange'
+          'background-color':
+            spot.Relevance.includes('Takeoff') &&
+            spot.Relevance.includes('Landing')
+              ? 'rgba(192,192,192,0.5)'
+              : spot.Relevance.includes('Takeoff')
+              ? 'rgba(245,171,53,0.4)'
+              : 'rgba(0,255,0,0.3)'
         }"
-        class="fas fa-plane"
-        *ngIf="!spot.IsAvailable"
-      ></i>
-      {{ spot.PlaneOnSpot?.SerialID }}
+      >
+        <div style="float: left">
+          {{ spot.Spot }}
+        </div>
+        <i
+          [ngStyle]="{
+            color: spot.PlaneOnSpot?.IsEmergency
+              ? 'red'
+              : spot.PlaneOnSpot?.PlanesPurpose === 'Landing'
+              ? 'green'
+              : 'orange'
+          }"
+          class="fas fa-plane"
+          *ngIf="!spot.IsAvailable"
+        ></i>
+        {{ spot.PlaneOnSpot?.SerialID }}
+      </div>
     </div>
   </div>
-</div>
 
-<!--/ Messages Panel /-->
-<atc-messages-output></atc-messages-output>
+  <!--/ Messages Panel /-->
+  <atc-messages-output></atc-messages-output>
+</body>

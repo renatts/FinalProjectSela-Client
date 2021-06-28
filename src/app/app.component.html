@@ -6,8 +6,8 @@
     </div>
     <ng-container>
       <span class="nav-tool-items">
-        <button mat-button class="start-btn" (click)="start()">
-          <i class="fas fa-power-off power-logo"></i>
+        <button mat-button mat-raised-button *ngIf="!isCollapsed" class="start-btn" (click)="start()">
+          <i class="fas fa-power-off power-logo" style="font-size: 1.5rem;"></i>
         </button>
       </span>
     </ng-container>
