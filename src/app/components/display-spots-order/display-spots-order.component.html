@@ -1,4 +1,7 @@
-<table class="paths">
+<table
+  class="paths"
+  *ngIf="landingsOrder?.length > 0 && takeoffsOrder?.length > 0"
+>
   <tr>
     <th class="paths-header" style="background-color: green">Landing</th>
     <td *ngFor="let spot of landingsOrder" style="color: green">

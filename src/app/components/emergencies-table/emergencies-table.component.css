@@ -1,6 +1,13 @@
+.emergencies-container {
+  position: fixed;
+  display: grid;
+  justify-content: center;
+}
+
 .emergencies {
   background-color: white;
-  width: 20%;
+  width: 400px;
+  display: block;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -11,72 +18,50 @@
 .emergencies-header {
   background-color: red;
   color: white;
-  table-layout: fixed;
-  border-collapse: collapse;
 }
 
-.emergencies-container {
-  position: fixed;
+.emergencies thead{
+  background-color: #f1f1f1;  
+  position:relative;
+  display: block; 
 }
 
-.emergencies-header tbody {
+.emergencies tbody{
+  /* Position */
   display: block;
+  position:relative;
+  width:100%;
+  overflow-y:scroll;
+  /* Decoration */
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.emergencies tr{
   width: 100%;
-  overflow-y: scroll;
-  height: 150px;
+  display: flex;
 }
 
-.emergencies-header tbody th {
+.emergencies td,
+.emergencies th{
+  flex-basis:100%;
   display: block;
 }
 
-.emergencies-header th,
-.emergencies-header td {
-  padding: 5px;
-  text-align: left;
+.body-screen{
+  max-height: 100px;
+}
+
+table th,
+table td {
   width: 200px;
-}
-
-td {
   text-align: center;
 }
 
-thead,
-tbody {
-  display: block;
-}
-
-tbody {
-  max-height: 80px; /* Just for the demo          */
-  overflow-y: auto; /* Trigger vertical scroll    */
-  overflow-x: hidden; /* Hide the horizontal scroll */
-}
-
-table,
-th,
-td {
-  text-align: center;
-}
-
-/* table,
-th,
-td {
-  text-align: center;
-}
-
-table {
-  width: 100%;
-  background-color: white;
-}
-
-th {
-  padding: 10px;
-}
-
-td {
-  border-bottom: 1px solid #ddd;
+table th{
+  margin-left: -15px;
+  padding: 5px;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
-} */
+}
