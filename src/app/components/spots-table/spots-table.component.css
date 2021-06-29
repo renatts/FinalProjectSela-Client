@@ -54,12 +54,12 @@ i {
 
 .danger-btn .tooltiptext {
   visibility: hidden;
-  background-color: rgba(1,1,1,0.6);
+  background-color: rgba(1, 1, 1, 0.6);
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
-  
+
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -74,12 +74,12 @@ i {
 
 .safe-btn .tooltiptext {
   visibility: hidden;
-  background-color: rgba(1,1,1,0.6);
+  background-color: rgba(1, 1, 1, 0.6);
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
-  
+
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -90,4 +90,12 @@ i {
 
 .safe-btn:hover .tooltiptext {
   visibility: visible;
+}
+
+.state {
+  color: white;
+}
+
+.time{
+  width: 75px
 }

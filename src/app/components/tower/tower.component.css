@@ -24,6 +24,10 @@ i {
   color: white;
 }
 
-body{
+body {
   position: relative;
+}
+
+.spot {
+  float: left;
 }

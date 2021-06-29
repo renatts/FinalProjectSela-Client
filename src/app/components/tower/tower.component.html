@@ -1,8 +1,13 @@
-<!--/ Spots Table /--><atc-spots-table></atc-spots-table>
-<!--/ Emergencies Table /--><atc-emergencies-table></atc-emergencies-table>
-<!--/ Flights Table /--><atc-flights-table></atc-flights-table>
-<!--/ Runways Table /--><atc-runway-emergency-set></atc-runway-emergency-set>
-<!--/ Spots Order /--><atc-display-spots-order></atc-display-spots-order>
+<!--/ Spots Table /--><atc-spots-table
+></atc-spots-table>
+<!--/ Emergencies Table /--><atc-emergencies-table
+></atc-emergencies-table>
+<!--/ Flights Table /--><atc-flights-table
+></atc-flights-table>
+<!--/ Runways Table /--><atc-runway-emergency-set
+></atc-runway-emergency-set>
+<!--/ Spots Order /--><atc-display-spots-order
+></atc-display-spots-order>
 
 <!--/ Map /-->
 <div class="map" *ngIf="spots?.length > 0">
@@ -18,7 +23,7 @@
             : 'rgba(0,255,0,0.3)'
       }"
     >
-      <div style="float: left">{{ spot.Spot }}</div>
+      <div class="spot">{{ spot.Spot }}</div>
       <i
         [ngStyle]="{
           color: spot.PlaneOnSpot?.IsEmergency
@@ -35,4 +40,5 @@
   </div>
 </div>
 
-<!--/ Messages Panel /--><atc-messages-output></atc-messages-output>
+<!--/ Messages Panel /--><atc-messages-output
+></atc-messages-output>

@@ -1,20 +1,20 @@
 .paths {
-  width: 301px;
   display: grid;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: -95px;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .paths-header {
-  width: 100px;
+  width: 150px;
   color: white;
 }
 
 table {
+  width: 351px;
   background-color: white;
 }
 
@@ -22,13 +22,29 @@ table,
 th,
 td {
   text-align: center;
-  
 }
 
-td{
+td {
   padding: 5px;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.landings{
+  background-color: green;
+}
+
+.landing-spot {
+  color: green;
+}
+
+.takeoffs{
+  background-color: orange;
+}
+
+.takeoff-spot {
+  color: darkorange;
+}
+

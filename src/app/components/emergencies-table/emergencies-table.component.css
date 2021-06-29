@@ -20,34 +20,34 @@
   color: white;
 }
 
-.emergencies thead{
-  background-color: #f1f1f1;  
-  position:relative;
-  display: block; 
+.emergencies thead {
+  background-color: #f1f1f1;
+  position: relative;
+  display: block;
 }
 
-.emergencies tbody{
+.emergencies tbody {
   /* Position */
   display: block;
-  position:relative;
-  width:100%;
-  overflow-y:scroll;
+  position: relative;
+  width: 100%;
+  overflow-y: scroll;
   /* Decoration */
-  border-top: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.emergencies tr{
+.emergencies tr {
   width: 100%;
   display: flex;
 }
 
 .emergencies td,
-.emergencies th{
-  flex-basis:100%;
+.emergencies th {
+  flex-basis: 100%;
   display: block;
 }
 
-.body-screen{
+.body-screen {
   max-height: 100px;
 }
 
@@ -57,11 +57,20 @@ table td {
   text-align: center;
 }
 
-table th{
+table th {
   margin-left: -15px;
   padding: 5px;
 }
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.emergency-plane {
+  padding: 0 5px;
+  color: white;
+}
+
+.direction {
+  color: white;
 }

@@ -18,6 +18,7 @@ export class SignalRService {
   hubEmergencyAirplanes: BehaviorSubject<Array<AirPlane>>;
   hubLandingsOrder: BehaviorSubject<Array<string>>;
   hubTakeoffsOrder: BehaviorSubject<Array<string>>;
+  hubDisplayResults: BehaviorSubject<string>;
 
   constructor() {
     this.hubSpots = new BehaviorSubject<Array<SpotData>>(null);
@@ -28,6 +29,8 @@ export class SignalRService {
     this.hubEmergencyAirplanes = new BehaviorSubject<Array<AirPlane>>(null);
     this.hubLandingsOrder = new BehaviorSubject<Array<string>>(null);
     this.hubTakeoffsOrder = new BehaviorSubject<Array<string>>(null);
+    this.hubDisplayResults = new BehaviorSubject<string>(null);
+
     this.initiateSignalRConnection();
   }
 
@@ -89,6 +92,10 @@ export class SignalRService {
     // display-spots-order (takeoff)
     this.connection.on('BroadcastTakeoffsRunwayOrder', (data) => {
       this.hubTakeoffsOrder.next(JSON.parse(data));
+    });
+
+    this.connection.on('BroadcastResults', (data) => {
+      this.hubDisplayResults.next(data);
     });
   }
 }

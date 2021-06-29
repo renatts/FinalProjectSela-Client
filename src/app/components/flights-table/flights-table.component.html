@@ -12,17 +12,17 @@
   <tbody>
     <tr *ngFor="let flight of airplanes">
       <td
+        class="flight"
         [ngStyle]="{
           'background-color': flight.IsEmergency ? 'red' : 'rgba(0,0,0,0)'
         }"
-        style="padding: 0 5px"
       >
         {{ flight.SerialID }}
       </td>
       <td>{{ flight.Src }}</td>
       <td>{{ flight.Dst }}</td>
       <td
-        style="color: white"
+        class="direction"
         [ngStyle]="{
           'background-color':
             flight.PlanesPurpose === 'Landing' ? 'green' : 'orange'

@@ -30,7 +30,7 @@
         {{ spot.Spot }}
       </td>
       <td
-        style="color: white"
+        class="state"
         [ngStyle]="{
           'background-color': spot.IsAvailable ? 'lightskyblue' : 'darkblue'
         }"
@@ -38,7 +38,7 @@
         {{ spot.IsAvailable ? "IDLE" : "BUSY" }}
       </td>
       <td>{{ spot.PlaneOnSpot?.SerialID }}</td>
-      <td style="width: 70px">
+      <td class="time">
         {{ spot.OccupiedSince | date: "HH:mm:ss" }}
       </td>
       <td>

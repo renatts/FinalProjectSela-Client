@@ -3,15 +3,19 @@
   *ngIf="landingsOrder?.length > 0 && takeoffsOrder?.length > 0"
 >
   <tr>
-    <th class="paths-header" style="background-color: green">Landing</th>
-    <td *ngFor="let spot of landingsOrder" style="color: green">
+    <th class="paths-header landings">Landings</th>
+    <td *ngFor="let spot of landingsOrder" class="landing-spot">
       {{ spot }} >
     </td>
+    <td>{{ landingsResults }} finished</td>
   </tr>
   <tr>
-    <th class="paths-header" style="background-color: orange">Takeoff</th>
-    <td *ngFor="let spot of takeoffsOrder" style="color: darkorange">
+    <th class="paths-header takeoffs">Takeoffs</th>
+    <td *ngFor="let spot of takeoffsOrder" class="takeoff-spot">
       {{ spot }} >
+    </td>
+    <td style="display: table-cell; padding-left: 40px">
+      {{ takeoffsResults }} finished
     </td>
   </tr>
 </table>

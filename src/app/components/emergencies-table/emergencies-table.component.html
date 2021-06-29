@@ -12,19 +12,19 @@
     <tbody class="body-screen">
       <tr *ngFor="let emergencyPlane of emergencyPlanes">
         <td
+          class="emergency-plane"
           [ngStyle]="{
             'background-color': emergencyPlane.IsEmergency
               ? 'rgba(255,0,0,0.6)'
               : 'rgba(0,0,0,0)'
           }"
-          style="padding: 0 5px; color: white"
         >
           {{ emergencyPlane.SerialID }}
         </td>
         <td>{{ emergencyPlane.Src }}</td>
         <td>{{ emergencyPlane.Dst }}</td>
         <td
-          style="color: white"
+          class="direction"
           [ngStyle]="{
             'background-color':
               emergencyPlane.PlanesPurpose === 'Landing' ? 'green' : 'orange'

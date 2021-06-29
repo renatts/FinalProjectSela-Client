@@ -58,9 +58,17 @@ i {
   position: absolute;
   z-index: 1;
   top: -5px;
-  right: 115%; 
+  right: 115%;
 }
 
 .danger-btn:hover .tooltiptext {
   visibility: visible;
+}
+
+.flight {
+  padding: 0 5px;
+}
+
+.direction {
+  color: white;
 }
