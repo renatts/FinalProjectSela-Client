@@ -12,7 +12,6 @@ export class FlightsTableComponent implements OnInit {
   airplanes: Array<AirPlane>;
 
   constructor(private signalRService: SignalRService){}
-
   ngOnInit(): void {
     this.signalRService.hubAirplanes.subscribe(
       (airplanes: Array<AirPlane>) => {

@@ -5,15 +5,14 @@
 
 .welcome-card {
   width: 1000px;
-  height: 200px;
+  height: 350px;
+  transform: translate(-50%, -50);
+
+  border-radius: 50px;
+  box-shadow: 10px 10px 21px #d3d3d6, -10px 10px 21px #fff;
 }
 
-/* .welcome-inner:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-} */
-
 .welcome-inner {
-  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); */
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 20px;
   padding: 100px;
