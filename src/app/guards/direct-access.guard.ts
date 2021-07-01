@@ -17,10 +17,7 @@ export class DirectAccessGuard implements CanActivate {
     private accessService: DirectAccessService
   ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (this.accessService.isClicked) {
       return true;
     }
