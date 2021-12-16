@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  SERVER_URL: 'http://localhost:41284/', // check at Properties > launchSettings.json(.NET)
-  HUB_URL: 'http://localhost:41284/signalrHub'
+    production: false,
+    SERVER_URL: 'http://localhost:41284/', // check at Properties > launchSettings.json(.NET)
+    HUB_URL: 'http://localhost:41284/signalrHub'
 };
 
 /*
